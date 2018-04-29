@@ -96,7 +96,7 @@ class HeartRate(TCX):
                     timevalue = node.text.strip() if node.text else np.nan
                 elif node.tag.strip() == '{http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2}HeartRateBpm':
                     # grab next value
-                    (event, node) = items.next()
+                    (event, node) = next(items)
                     if node.tag.strip() == '{http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2}Value':
                         heartrate = node.text.strip() if node.text else np.nan
                     val = (timevalue, heartrate)
@@ -227,13 +227,13 @@ class LatLong(TCX):
             if node.tag:
                 if node.tag.strip() == '{http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2}Time':
                     timevalue = node.text.strip() if node.text else np.nan
-                    (event, node) = items.next()
+                    (event, node) = next(items)
                     if node.tag.strip() == '{http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2}Position':
                         # grab next value
-                        (event, node) = items.next()
+                        (event, node) = next(items)
                         if node.tag.strip() == '{http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2}LatitudeDegrees':
                             latitude = node.text.strip() if node.text else np.nan
-                        (event, node) = items.next()
+                        (event, node) = next(items)
                         if node.tag.strip() == '{http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2}LongitudeDegrees':
                             longitude = node.text.strip() if node.text else np.nan
                         val = (timevalue, latitude, longitude)
