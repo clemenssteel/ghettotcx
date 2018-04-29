@@ -56,7 +56,7 @@ class TCX(object):
 
     def __init__(self, filepath=FILEPATH):
         """ load a TCX from a filepath """
-        print "Loading", filepath, "..."
+        print("Loading", filepath, "...")
         self._df = self._get_dataframe(os.path.join(filepath))
 
     @classmethod
@@ -119,10 +119,10 @@ class HeartRate(TCX):
 
     def zoneify(self, x):
         if x['heartrate'] < 110:   return 1
-        elif x['heartrate'] < 130: return 2
-        elif x['heartrate'] < 145: return 3
-        elif x['heartrate'] < 165: return 4
-        elif x['heartrate'] > 165: return 5
+        elif x['heartrate'] < 136: return 2
+        elif x['heartrate'] < 150: return 3
+        elif x['heartrate'] < 174: return 4
+        elif x['heartrate'] >= 174: return 5
         else:  return 0
 
     # TODO: Move to test file; this was old code
