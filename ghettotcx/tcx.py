@@ -49,7 +49,6 @@ FILEDIRECTORY='./example_data'
 FILENAME='example.tcx'
 FILEPATH=os.path.join(FILEDIRECTORY, FILENAME)
 
-
 class TCX(object):
     """interface for objects that parse TCX files"""
     _df = None
